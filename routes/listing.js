@@ -17,6 +17,7 @@ router.post('/', auth, async (req, res) => {
   let listings = new Listing({
     name: req.body.name,
     category: req.body.category,
+    adress: req.body.adress,
   });
 
   listings = await listings.save();

@@ -10,7 +10,6 @@ const listingSchema = new mongoose.Schema({
     trim: true,
     minlength: 5,
     maxlength: 50,
-    date: { type: Date, default: Date.now },
   },
   // owner: {
   //   type: mongoose.Schema.Types.ObjectId,
@@ -23,6 +22,13 @@ const listingSchema = new mongoose.Schema({
     enum: ['apartment', 'studio apartment', 'house'],
     trim: true,
   },
+  adress: {
+    type: String,
+    required: true,
+    trim: true,
+    minlength: 5,
+    maxlength: 50,
+  },
   date: { type: Date, default: Date.now },
 });
 
@@ -32,6 +38,7 @@ function validateListing(listing) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
     category: Joi.string().max(50).required(),
+    adress: Joi.string().max(50).required(),
   });
 
   // ownerId: Joi.objectId().required(),

@@ -40,15 +40,15 @@ userSchema.methods.generateAuthToken = function () {
 
 const User = mongoose.model('User', userSchema);
 
-async function createUser(name, email, password) {
-  const user = new User({
-    name,
-    email,
-    password,
-  });
-  const result = await user.save();
-  console.log(result);
-}
+// async function createUser(name, email, password) {
+//   const user = new User({
+//     name,
+//     email,
+//     password,
+//   });
+//   const result = await user.save();
+//   console.log(result);
+// }
 
 // createUser('test user date', 'user-date@gmail.com', '12345');
 

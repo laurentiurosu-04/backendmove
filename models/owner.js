@@ -1,13 +1,5 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-//temp db connection
-// mongoose
-//   .connect('mongodb://localhost/projectmove')
-//   .then(() => console.log('connected to MongoDB...'))
-//   .catch((err) =>
-//     console.error('could not connect to mongoDB....', err.message)
-//   );
-//temp db connection
 
 const ownerSchema = new mongoose.Schema({
   name: {
