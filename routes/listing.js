@@ -2,15 +2,15 @@ const express = require('express');
 const router = express.Router();
 const { Listing, validate } = require('../models/listing');
 
-const auth = require('../middleware/auth');
-const admin = require('../middleware/admin');
+// const auth = require('../middleware/auth');
+// const admin = require('../middleware/admin');
 
 router.get('/', async (req, res) => {
   const listings = await Listing.find().sort('name');
   res.send(listings);
 });
 
-router.post('/', auth, async (req, res) => {
+router.post('/', async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -24,6 +24,21 @@ router.post('/', auth, async (req, res) => {
 
   res.send(listings);
 });
+
+// router.post('/', auth, async (req, res) => {
+//   const { error } = validate(req.body);
+//   if (error) return res.status(400).send(error.details[0].message);
+
+//   let listings = new Listing({
+//     name: req.body.name,
+//     category: req.body.category,
+//     adress: req.body.adress,
+//   });
+
+//   listings = await listings.save();
+
+//   res.send(listings);
+// });
 
 // router.put('/:id', async (req, res) => {
 //   const { error } = validate(req.body);

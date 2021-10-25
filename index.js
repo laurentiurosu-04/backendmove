@@ -8,9 +8,11 @@ const winston = require('winston');
 
 var allowlist = [
   'http://localhost/api/user/',
+  'http://localhost/api/auth/me',
   'http://localhost/api/listing/',
   'http://localhost/api/me/',
   'http://localhost:19002/',
+  'http://localhost:27017',
 ];
 
 var corsOptionsDelegate = function (req, callback) {
@@ -23,10 +25,15 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-// app.post('/api/auth', cors(corsOptionsDelegate), function (req, res, next) {
-//   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
-//   next();
-// });
+app.post('/api/auth', cors(corsOptionsDelegate), function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
+  next();
+});
+
+app.get('/api/auth/me', cors(corsOptionsDelegate), function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
+  next();
+});
 
 app.post('/api/user', cors(corsOptionsDelegate), function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
