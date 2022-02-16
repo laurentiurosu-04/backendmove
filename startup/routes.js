@@ -1,7 +1,7 @@
 const express = require('express');
 const error = require('../middleware/error');
 
-const listing = require('../routes/listing');
+const recipe = require('../routes/recipe');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
 
@@ -11,6 +11,6 @@ module.exports = function (app) {
   app.use('/api/auth/me', auth);
   app.use('/api/auth', auth);
   app.use('/api/user', users);
-  app.use('/api/listing', listing);
+  app.use('/api/recipe', recipe);
   app.use(error);
 };

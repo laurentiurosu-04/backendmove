@@ -9,7 +9,7 @@ const winston = require('winston');
 var allowlist = [
   'http://localhost/api/user/',
   'http://localhost/api/auth/me',
-  'http://localhost/api/listing/',
+  'http://localhost/api/recipe/',
   'http://localhost/api/me/',
   'http://localhost:19002/',
   'http://localhost:27017',
@@ -40,7 +40,7 @@ app.post('/api/user', cors(corsOptionsDelegate), function (req, res, next) {
   next();
 });
 
-app.post('/api/listing', cors(corsOptionsDelegate), function (req, res, next) {
+app.post('/api/recipe', cors(corsOptionsDelegate), function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
   next();
 });

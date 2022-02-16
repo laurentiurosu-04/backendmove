@@ -482,3 +482,13 @@
 {"level":"info","message":"Listening on port 3000..."}
 {"level":"info","message":"Listening on port 3000..."}
 {"code":"ERR_HTTP_HEADERS_SENT","level":"error","message":"Cannot set headers after they are sent to the client Cannot set headers after they are sent to the client","stack":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client\n    at ServerResponse.setHeader (_http_outgoing.js:561:11)\n    at ServerResponse.header (D:\\work\\Project_Move\\backend\\node_modules\\express\\lib\\response.js:771:10)\n    at D:\\work\\Project_Move\\backend\\routes\\users.js:28:6\n    at processTicksAndRejections (internal/process/task_queues.js:95:5)"}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
+{"level":"info","message":"Listening on port 3000..."}
