@@ -1,18 +1,20 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 var cors = require('cors');
 app.use(cors());
+
+app.set('public', path.join(__dirname, 'public'));
 
 const winston = require('winston');
 
 var allowlist = [
   'http://localhost/api/user/',
   'http://localhost/api/auth/me',
+  'http://localhost/api/upload',
   'http://localhost/api/recipe/',
   'http://localhost/api/me/',
-  'http://localhost:19002/',
-  'http://localhost:27017',
 ];
 
 var corsOptionsDelegate = function (req, callback) {
@@ -25,12 +27,7 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-app.post('/api/auth', cors(corsOptionsDelegate), function (req, res, next) {
-  res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
-  next();
-});
-
-app.get('/api/auth/me', cors(corsOptionsDelegate), function (req, res, next) {
+app.post('/api/upload', cors(corsOptionsDelegate), function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
   next();
 });
@@ -40,31 +37,29 @@ app.post('/api/user', cors(corsOptionsDelegate), function (req, res, next) {
   next();
 });
 
+app.post('/api/auth', cors(corsOptionsDelegate), function (req, res, next) {
+  res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
+  next();
+});
+
+// app.get('/api/auth/me', cors(corsOptionsDelegate), function (req, res, next) {
+//   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
+//   next();
+// });
+
 app.post('/api/recipe', cors(corsOptionsDelegate), function (req, res, next) {
   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
   next();
 });
 
-// app.get('/api/listing', cors(corsOptionsDelegate), function (req, res, next) {
-//   res.json({ msg: 'This is CORS-enabled for an allowed domain.' });
-//   next();
-// });
-
-require('./startup/loggin');
-require('./startup/routes')(app);
 require('./startup/db')();
 require('./startup/config')();
 require('./startup/validation');
+require('./startup/routes')(app);
+require('./startup/loggin');
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
   winston.info(`Listening on port ${port}...`);
 });
-
-// app.use((req, res, next) => {
-//   res.append('Access-Control-Allow-Origin', ['*']);
-//   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//   res.append('Access-Control-Request-Headers: Content-Type');
-//   next();
-// });

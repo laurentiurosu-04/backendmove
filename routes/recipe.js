@@ -25,6 +25,18 @@ router.post('/', async (req, res) => {
   recipe = await recipe.save();
 
   res.send(recipe);
+
+  if (!req.body.name) {
+    return res.status(400).json({
+      status: 'error',
+      error: 'req body cannot be empty',
+    });
+  }
+
+  res.status(200).json({
+    status: 'succes',
+    data: req.body,
+  });
 });
 
 // router.post('/', auth, async (req, res) => {

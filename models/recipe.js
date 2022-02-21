@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 // const { ownerSchema } = require('./owner');
-const { userSchema } = require('./user');
+// const { userSchema } = require('./user');
 
 const recipeSchema = new mongoose.Schema({
   name: {
@@ -16,12 +16,6 @@ const recipeSchema = new mongoose.Schema({
   //   type: mongoose.Schema.Types.ObjectId,
   //   ref: `${userSchema}`,
   //   required: true,
-  // },
-  // category: {
-  //   type: String,
-  //   required: true,
-  //   enum: ['apartment', 'studio apartment', 'house'],
-  //   trim: true,
   // },
   cookingTime: {
     type: String,
@@ -75,21 +69,21 @@ exports.validate = validateRecipe;
 //   console.log(result);
 // }
 
-async function createRecipe(name, cookingTime, dificulty, description) {
-  const recipe = new Recipe({
-    name,
-    cookingTime,
-    dificulty,
-    description,
-  });
-  const result = await recipe.save();
-  console.log(result);
-}
+// async function createRecipe(name, cookingTime, dificulty, description) {
+//   const recipe = new Recipe({
+//     name,
+//     cookingTime,
+//     dificulty,
+//     description,
+//   });
+//   const result = await recipe.save();
+//   console.log(result);
+// }
 
 async function getListing() {
   const recipe = await Recipe.find().select('name');
   console.log(recipe);
 }
 
-createRecipe('what is this??', '30 min', 'easy', 'hello');
-getListing();
+// createRecipe('what is this??', '30 min', 'easy', 'hello');
+// getListing();
